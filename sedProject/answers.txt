@@ -1,10 +1,9 @@
 Q1) sed -E "s/color/colour/" /usr/share/dict/american-english | sed "s/behavior/behaviour/" | sed "s/honor/honour/" | sed "s/humor/humour/" > new_dict
 
-Q2) sed -E "s/FOOP/if/" prog.c | sed -E "s/BEEPBOOP/\/\*\*/" | sed -E "s/BEEPBOOP/\/\*\*/" | sed -E "s/BEEPBOOP/\/\*\*/"
-This one needed multiple BEEPBOOPS idk why
+Q2) sed -E "s/FOOP/if/g;s/BEEPBOOP/\/\*\*/g" prog.c > myFile.c
 
 Q3)
-sed -E '/<script.*>/ , /<\/script>/d' faculty > faculty.index
+sed -E '/<script/,/<\/script>/ d' faculty > faculty.index
 
 Q4)
 sed -nE '/# *define/p' limits.h | sed -E 's/# *define//' > clean_limits.h
@@ -13,7 +12,7 @@ Q5)
 sed -iE 's/gattaca/@@GREAT MOVIE@@/' dna.txt
 
 Q6)
-sed -E 's/53/S/;s/55/U/;s/50/P/;s/45/E/;s/52/R/;s/54/T/;s/41/A/;s/15/NAK/;s/0a/\n/;s/53/S/;s/52/R/g' file > decoded
+sed -E 's/53/S/g;s/55/U/g;s/50/P/g;s/45/E/g;s/52/R/g;s/54/T/g;s/41/A/g;s/15/NAK/g;s/0a/\n/g' file > decoded
 
 Q7)
 tail -50  lyrics > ending_lyrics
@@ -21,3 +20,4 @@ Not using sed, doesnt really make sense to even use sed
 
 Q8)
 In the script file
+
