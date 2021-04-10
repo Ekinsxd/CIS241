@@ -65,10 +65,10 @@ void mergeSort(char** arr, int l, int r){
 }
 
 void igiveup(char** arr, int len){
-	char temp[50];
+	char temp[100];
 	for (int i = 0; i< len; ++i){
 		for (int j = i; j< len; ++j){
-			if (strcasecmp(arr[j],arr[i]) < 1){
+			if (strcasecmp(arr[j],arr[i]) < 0){
 				strcpy(temp, arr[i]);
 				strcpy(arr[i], arr[j]);
 				strcpy(arr[j], temp);

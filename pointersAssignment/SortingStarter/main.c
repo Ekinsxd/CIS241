@@ -20,49 +20,45 @@ int main(int argc, char** argv){
 	char* token;
 	int wordcount = 0;
 	int lettercount = 0;
-	token = strtok(Contents,"\n");
-	for (int i = 0; token != NULL; i++){
-		++wordcount;
-		token = strtok(NULL, "\n");
+	for (int i = 0; Contents[i] != '\0'; i++){
+		if (Contents[i] == '\n')
+			++wordcount;
+		//token = strtok(NULL, "\n");
 	}
 
-	Words = malloc(sizeof(char*) * wordcount);
+	Words = malloc(sizeof(char*) * (wordcount));
 	
-	load_file(argv[1], &Contents);
 	token = strtok(Contents, "\n");
 	for (int i = 0; token != NULL; i++){
-		lettercount = 0;
+		lettercount = 1;
 		for(int j = 0; token[j] != '\0'; j++){
 			lettercount++;
 		}
-		Words[i]=malloc(sizeof(char) * (lettercount + 1));//include null char
+		Words[i]=malloc(sizeof(char) * (lettercount + 10));//include buffer
 		strcpy(Words[i], token);
 		token = strtok(NULL, "\n");
 	}
-	printf("%d", wordcount);
-	for (int i = 0; i< wordcount; ++i){
-	//	printf("%s\n", Words[i]);
-	}
-	
+
 	char*** WordsPtr = &Words;
 	igiveup(*WordsPtr, wordcount);
-	//strcpy(Contents, "\0");//clear contents
-	char* temp;
+	strcpy(Contents, "");//clear contents
+	
 	for (int i = 0; i< wordcount; ++i){
 		strcat(Words[i],"\n");//add newline
-		strcat(temp, Words[i]);//append all words onto contents
+		strcat(Contents, Words[i]);//append all words onto contents
 	}
 
-	save_file(argv[2], temp, size);
+	save_file(argv[2], Contents, size);
 
 	//free mem
-	
 
+	printf("%d", wordcount);
 	for (int i = 0; i < wordcount; i++){
 		free(Words[i]);
 	}
 	free(Words);
-
+	//
+	//
 	// Sort the file with the function you wrote.
 	// parse into strings
 	
