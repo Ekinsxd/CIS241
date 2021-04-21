@@ -9,6 +9,8 @@
  * Usage:
  * ./a.out FILE_TO_READ FILE_TO_WRITE
  *
+ * Sorts the File read and writes to
+ * the write file.
  */
 
 int main(int argc, char** argv){
@@ -38,7 +40,7 @@ int main(int argc, char** argv){
 		strcpy(Words[i], token);
 		token = strtok(NULL, "\n");
 	}
-
+	
 	char*** WordsPtr = &Words;
 	igiveup(*WordsPtr, wordcount);
 	strcpy(Contents, "");//clear contents
