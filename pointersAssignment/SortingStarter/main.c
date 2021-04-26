@@ -56,7 +56,7 @@ int main(int argc, char** argv){
 
 	printf("%d", wordcount);
 	for (int i = 0; i < wordcount; i++){
-		free(Words[i]);
+	//	free(*(Words + i));
 	}
 	free(Words);
 	//
